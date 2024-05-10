@@ -50,16 +50,16 @@ test_set = test_datagen.flow_from_directory(ValidationFolder, target_size=(224, 
 result_model_fit = model.fit(training_set, validation_data=test_set, epochs=50, steps_per_epoch=len(training_set))
 
 # Accuracy
-plt.plot(result.history['accuracy'], label='train_accuracy')
-plt.plot(result.history['value_accuracy'], label='value_accuracy')
+plt.plot(result_model_fit.history['accuracy'], label='train_accuracy')
+plt.plot(result_model_fit.history['val_accuracy'], label='val_accuracy')
 plt.legend()
 plt.show()
 
 # Loss
-plt.plot(result.history['loss'], label='train_loss')
-plt.plot(result.history['value_loss'], label='value_loss')
+plt.plot(result_model_fit.history['loss'], label='train_loss')
+plt.plot(result_model_fit.history['val_loss'], label='val_loss')
 plt.legend()
 plt.show()
 
 # Save Model
-model.save('car_brands.h5')
+model.save('car_brands_model.h5')
